@@ -1,0 +1,21 @@
+.horizontal-container {
+    display: flex;
+    align-items: center;
+  }
+  
+.horizontal-container h2 {
+    margin-right: 10px; /* 원하는 간격 설정 */
+}
+
+.horizontal-container select {
+    margin-right: 20px;
+}
+
+.horizontal-container input {
+    margin-right: 20px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 30% 70%; /* 각 열의 너비를 지정 */
+  }
