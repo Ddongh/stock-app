@@ -1,16 +1,23 @@
 import "../stockPrediction.css";
+import { createRef } from "react";
 
 const Option = ({ state, onStateChange, startAnalyze }) => {
-    const handleInputChange = (e) => {
+    const handleInputChange = (e) => { // 옵션 선택시 이벤트(setState)
         const { name, value } = e.target;
         onStateChange(name, value);
     }
+
+    const stockRef = createRef();
+    const methodRef = createRef();
+    const startRef = createRef();
+    const endRef = createRef();
 
     return (
         <div>
             <div>
                 <h3>종목</h3>
-                <select name="stock" value={state.stock} onChange={handleInputChange}>
+                <select ref={stockRef} name="stock" value={state.stock} onChange={handleInputChange}>
+                    <option hidden>===선택===</option>
                     <option>네이버</option>
                     <option>카카오</option>
                     <option>라인</option>
@@ -22,7 +29,8 @@ const Option = ({ state, onStateChange, startAnalyze }) => {
             </div>
             <div>
                 <h3>분석방법</h3>
-                <select name="method" value={state.method} onChange={handleInputChange}>
+                <select ref={methodRef} name="method" value={state.method} onChange={handleInputChange}>
+                    <option hidden>===선택===</option>
                     <option>선형 회귀</option>
                     <option>로지스틱 회귀</option>
                     <option>ARIMA</option>
@@ -34,13 +42,13 @@ const Option = ({ state, onStateChange, startAnalyze }) => {
             </div>
             <div>
                 <h3>시작일</h3>
-                <input name="startDate" type="date" value={state.startDate} onChange={handleInputChange} />
+                <input ref={startRef} name="startDate" type="date" value={state.startDate} onChange={handleInputChange} />
 
                 <h3>종료일</h3>
-                <input name="endDate" type="date" value={state.endDate} onChange={handleInputChange} />
+                <input ref={endRef} name="endDate" type="date" value={state.endDate} onChange={handleInputChange} />
             </div>
             <div>
-                <button onClick={startAnalyze}>분석하기</button>
+                <button onClick={ () => startAnalyze({...state})}>분석하기</button>
             </div>
         </div>
     );
