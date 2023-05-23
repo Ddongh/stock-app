@@ -1,8 +1,10 @@
 import Option from "./Option";
 import StockHeader from "./StockHeader";
 import { useState } from "react";
+import sf from "../stockFunc/stockFunc.js"; // 주식 크롤링 및 분석 function
 
 const StockPrediction = () => {
+    
     const [state, setState] = useState({
         stock: "",
         method: "",
@@ -20,7 +22,7 @@ const StockPrediction = () => {
     return (
         <div className="container">
             <div>
-                <Option state={state} onStateChange={handleStateChange} />
+                <Option state={state} onStateChange={handleStateChange} startAnalyze={sf.analyze} />
             </div>
             <div>
                 <div>

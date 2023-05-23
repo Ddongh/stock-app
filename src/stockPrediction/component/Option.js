@@ -1,6 +1,6 @@
 import "../stockPrediction.css";
 
-const Option = ({ state, onStateChange }) => {
+const Option = ({ state, onStateChange, startAnalyze }) => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         onStateChange(name, value);
@@ -40,7 +40,7 @@ const Option = ({ state, onStateChange }) => {
                 <input name="endDate" type="date" value={state.endDate} onChange={handleInputChange} />
             </div>
             <div>
-                <button>분석하기</button>
+                <button onClick={startAnalyze}>분석하기</button>
             </div>
         </div>
     );
